@@ -1,0 +1,21 @@
+version: '3.7'
+
+volumes:
+  db-data:
+  vendor:
+  var:
+
+services:
+  mysql:
+    container_name: training_api_db
+    image: mysql:5
+    ports:
+      - '3307:3306'
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: trainingapi
+      MYSQL_USER: training
+      MYSQL_PASSWORD: password
+    restart: unless-stopped
